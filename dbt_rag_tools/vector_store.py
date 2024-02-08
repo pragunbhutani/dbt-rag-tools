@@ -1,7 +1,7 @@
 import chromadb
 import chromadb.utils.embedding_functions as embedding_functions
 
-from dbt_model import DbtModel
+from dbt_rag_tools.dbt_model import DbtModel
 
 
 class VectorStore:
