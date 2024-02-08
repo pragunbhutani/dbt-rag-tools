@@ -8,12 +8,12 @@ from os import path
 HERE = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
+with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
     name="dbt-rag-tools",
-    version="0.1.3",
+    version="0.1.4",
     description="A set of utilities to enable RAG for dbt projects.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -28,9 +28,9 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
-        "Operating System :: OS Independent"
+        "Operating System :: OS Independent",
     ],
     packages=["dbt_rag_tools"],
     include_package_data=True,
-    install_requires=["pyyaml", "typing_extensions", "chromadb", "openai"]
+    install_requires=["pyyaml", "typing_extensions", "chromadb", "openai"],
 )

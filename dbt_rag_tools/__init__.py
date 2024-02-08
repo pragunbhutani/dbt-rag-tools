@@ -1,4 +1,3 @@
-from dbt_rag_tools.custom_types import DbtModelDict, DbtModelColumn
 from dbt_rag_tools.dbt_model import DbtModel
 from dbt_rag_tools.dbt_project import DbtProject
 from dbt_rag_tools.vector_store import VectorStore

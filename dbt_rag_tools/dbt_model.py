@@ -1,14 +1,17 @@
 from typing import TypedDict, Callable
 from typing_extensions import NotRequired
 
+
 class DbtModelColumn(TypedDict):
     name: str
     description: NotRequired[str]
+
 
 class DbtModelDict(TypedDict):
     name: str
     description: NotRequired[str]
     columns: list[DbtModelColumn]
+
 
 class DbtModel:
     """
@@ -42,7 +45,7 @@ class DbtModel:
         )
 
         return None
-    
+
     def __print_model_doc__(model: DbtModelDict) -> str:
         """
         Template function that takes a model name, description and a list of columns as arguments
@@ -57,13 +60,13 @@ class DbtModel:
         """
         model_text = f"The table { model['name'] } is described as follows: { model['description'] }"
         model_text += "\nThis table contains the following columns:\n"
-        
-        for col in model['columns']:
+
+        for col in model["columns"]:
             model_text += "\n"
             model_text += f"- { col['name'] }: { col['description'] }"
 
         return model_text
-    
+
     def as_dict(self) -> DbtModelDict:
         """
         Returns the dbt model as a dictionary.

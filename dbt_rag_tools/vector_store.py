@@ -1,7 +1,7 @@
 import chromadb
 import chromadb.utils.embedding_functions as embedding_functions
 
-from custom_types import DbtModel
+from dbt_model import DbtModel
 
 
 class VectorStore:
@@ -89,7 +89,7 @@ class VectorStore:
         return self.__collection.upsert(
             documents=documents, metadatas=metadatas, ids=ids
         )
-    
+
     def query_collection(self, query: str, n_results: int = 3) -> list[str]:
         """
         Query the collection for the k nearest neighbours to the query.
@@ -101,7 +101,9 @@ class VectorStore:
         Returns:
             list[str]: A list of the n nearest neighbours to the query.
         """
-        return self.__collection.query(query_texts=[query], n_results=n_results, include=["documents"])
+        return self.__collection.query(
+            query_texts=[query], n_results=n_results, include=["documents"]
+        )
 
     def reset_collection(self) -> None:
         """
