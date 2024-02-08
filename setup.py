@@ -13,7 +13,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="dbt-rag-tools",
-    version="0.1.1",
+    version="0.1.2",
     description="A set of utilities to enable RAG for dbt projects.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -32,5 +32,5 @@ setup(
     ],
     packages=["dbt_rag_tools"],
     include_package_data=True,
-    install_requires=["pyyaml", "typing_extensions"]
+    install_requires=["pyyaml", "typing_extensions", "chromadb", "openai"]
 )
