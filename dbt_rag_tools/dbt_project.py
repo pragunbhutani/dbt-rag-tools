@@ -13,7 +13,7 @@ class DbtProject:
         project_root (str): Absolute path to the root of the dbt project being parsed
     """
 
-    def __init__(self, project_root) -> None:
+    def __init__(self, project_root: str) -> None:
         """
         Initializes a dbt project parser object.
 
@@ -36,7 +36,12 @@ class DbtProject:
 
         return None
 
-    def get_models(self, models=[], included_folders=[], excluded_folders=[]) -> list[DbtModel]:
+    def get_models(
+        self,
+        models: list[str] = [],
+        included_folders: list[str] = [],
+        excluded_folders: list[str] = [],
+    ) -> list[DbtModel]:
         """
         Scan all the YMLs in the specified folders and extract all models into a single list.
 
@@ -71,7 +76,7 @@ class DbtProject:
 
         for file in yaml_files:
             should_exclude_file = False
-            
+
             for excluded_folder in excluded_folders:
                 if excluded_folder in file:
                     should_exclude_file = True
@@ -85,7 +90,7 @@ class DbtProject:
 
                 for model in yaml_contents.get("models", []):
                     if (models != []) and (model.get("name") not in models):
-                        continue                    
+                        continue
                     parsed_models.append(DbtModel(model))
 
         if parsed_models == []:

@@ -1,17 +1,5 @@
-from typing import TypedDict, Callable
-from typing_extensions import NotRequired
-
-
-class DbtModelColumn(TypedDict):
-    name: str
-    description: NotRequired[str]
-
-
-class DbtModelDict(TypedDict):
-    name: str
-    description: NotRequired[str]
-    columns: list[DbtModelColumn]
-
+from typing import Callable
+from custom_types import DbtModelDict
 
 class DbtModel:
     """
@@ -24,7 +12,7 @@ class DbtModel:
             May or may not be exhaustive.
     """
 
-    def __init__(self, model_dict: dict) -> None:
+    def __init__(self, model_dict: DbtModelDict) -> None:
         """
         Initializes a dbt model object.
 
@@ -47,6 +35,17 @@ class DbtModel:
         return None
     
     def __print_model_doc__(model: DbtModelDict) -> str:
+        """
+        Template function that takes a model name, description and a list of columns as arguments
+        and returns a text description of the model. This description can be used as a part of a prompt
+        for an LLM.
+
+        Args:
+            model (DbtModelDict): A dictionary representation of the dbt model.
+
+        Returns:
+            str: A text description of the model, including the list of columns with their descriptions.
+        """
         model_text = f"The table { model['name'] } is described as follows: { model['description'] }"
         model_text += "\nThis table contains the following columns:\n"
         
