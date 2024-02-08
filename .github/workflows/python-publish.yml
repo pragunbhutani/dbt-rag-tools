@@ -18,6 +18,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}
 
     steps:
       - uses: actions/checkout@v4
@@ -34,7 +35,7 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-          REPORSITORY_URL: ${{ env.REPORSITORY_URL }}
+          REPORSITORY_URL: ${{ env.REPOSITORY_URL }}
         run: |
           python setup.py sdist bdist_wheel
           echo $REPORSITORY_URL
